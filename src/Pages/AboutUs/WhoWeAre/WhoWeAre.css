@@ -1,0 +1,295 @@
+/* ==============================
+   WHO WE ARE — Full Modern & Artistic Version
+   ============================== */
+* {
+  margin: 0;
+  padding: 0;
+}
+.who-section {
+  position: relative;
+  min-height: 100vh;
+  padding: 100px 8%;
+  background: linear-gradient(135deg, #0d0d0d, #1a1a1a, #2b2b2b);
+  color: #f5f5f5;
+  overflow: hidden;
+  font-family: "Merriweather", serif;
+}
+
+/* ===== Background Pattern Overlay ===== */
+.who-overlay {
+  position: absolute;
+  inset: 0;
+  background: url("../../../assets/patern-dark.jpg") repeat;
+  opacity: 0.08;
+  z-index: 0;
+  mix-blend-mode: overlay;
+}
+
+/* ===== Layout Container ===== */
+.who-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* ===== Header Section ===== */
+.who-header {
+  text-align: center;
+  margin-bottom: 60px;
+  animation: fadeInDown 1.2s ease;
+}
+
+.who-title {
+  font-size: 48px;
+  color: #ffcc66;
+  letter-spacing: 2px;
+  text-shadow: 0 0 20px rgba(255, 204, 102, 0.4);
+}
+
+.who-subtitle {
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: #bbb;
+  margin-top: 8px;
+}
+
+/* ===== Intro Paragraph ===== */
+.who-intro {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #ddd;
+  text-align: center;
+  margin-bottom: 70px;
+  max-width: 950px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: fadeIn 1.5s ease;
+}
+
+/* ====== Artistic Vision / Mission / Core Values ====== */
+.who-boxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 35px;
+  margin-bottom: 90px;
+  perspective: 1000px;
+}
+
+.who-card {
+  position: relative;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.05),
+    rgba(30, 30, 30, 0.1)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.05);
+  transition: transform 0.6s ease, box-shadow 0.6s ease, border 0.6s ease;
+  overflow: hidden;
+  backdrop-filter: blur(6px);
+  animation: floaty 6s ease-in-out infinite;
+}
+
+/* === Animated glowing border === */
+.who-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 2px;
+  background: linear-gradient(120deg, #ff9966, #ffcc66, #66ccff, #ff9966);
+  background-size: 300% 300%;
+  animation: gradientGlow 6s linear infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.who-card:hover::before {
+  opacity: 1;
+}
+
+.who-card:hover {
+  transform: translateY(-12px) rotateY(5deg);
+  box-shadow: 0 0 40px rgba(255, 204, 102, 0.25);
+  border-color: rgba(255, 204, 102, 0.3);
+}
+
+/* Card Titles */
+.who-card h2 {
+  font-size: 24px;
+  margin-bottom: 14px;
+  color: #ffcc66;
+  text-shadow: 0 0 10px rgba(255, 204, 102, 0.5);
+  letter-spacing: 1px;
+}
+
+/* Card Texts */
+.who-card p,
+.who-card ul {
+  font-size: 17px;
+  color: #ddd;
+  line-height: 1.7;
+}
+
+.who-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.who-card ul li {
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 22px;
+}
+
+.who-card ul li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  color: #ff9966;
+  font-size: 14px;
+}
+
+.who-card ul li span {
+  color: #ff9966;
+  font-weight: bold;
+}
+
+/* Floating motion for cards */
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0px) rotateY(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotateY(3deg);
+  }
+}
+
+/* Gradient glow animation */
+@keyframes gradientGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ===== What Sets Us Apart Section ===== */
+
+.who-unique {
+  max-width: 950px;
+  animation: fadeInUp 1.5s ease;
+}
+.who-unique h2 {
+  text-align: center;
+}
+
+.who-unique h2 {
+  font-size: 28px;
+  margin-bottom: 25px;
+  color: #ffcc66;
+  text-shadow: 0 0 15px rgba(255, 204, 102, 0.5);
+}
+
+.who-unique ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.who-unique ul li {
+  font-size: 18px;
+  line-height: 1.7;
+  margin: 14px 0;
+  padding-left: 28px;
+  position: relative;
+  color: #ddd;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.who-unique ul li::before {
+  content: "◆";
+  position: absolute;
+  left: 0;
+  color: #ff9966;
+  font-size: 16px;
+}
+
+.who-unique ul li:hover {
+  color: #ffcc66;
+  transform: translateX(5px);
+}
+.who-unique ul li span {
+  color: #fff; /* bright accent color */
+  font-weight: 700; /* bold */
+  text-transform: uppercase; /* make it feel like a title */
+  font-size: 16px; /* slightly bigger than item text */
+  letter-spacing: 1px; /* spacing for emphasis */
+  margin-right: 6px; /* small gap after the title */
+  text-shadow: 0 0 6px rgba(255, 204, 102, 0.6);
+}
+
+/* ===== Entry Animations ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Responsive Tweaks ===== */
+@media (max-width: 768px) {
+  .who-title {
+    font-size: 36px;
+  }
+
+  .who-intro {
+    font-size: 16px;
+    margin-bottom: 50px;
+  }
+
+  .who-card {
+    padding: 24px;
+  }
+
+  .who-unique h2 {
+    font-size: 24px;
+  }
+}
