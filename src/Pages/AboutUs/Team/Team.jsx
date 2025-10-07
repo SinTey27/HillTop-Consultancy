@@ -3,7 +3,7 @@ import "./Team.css";
 import hiwetu from "../../../assets/hiwetu.jpg";
 import daniel from "../../../assets/daniel.jpg";
 import helen from "../../../assets/helen.jpg";
-import sintey from "../../../assets/Sintey.jpg";
+import sintey from "../../../assets/sintey.jpg";
 import samuel from "../../../assets/samuel.jpg";
 import marta from "../../../assets/marta.jpg";
 
