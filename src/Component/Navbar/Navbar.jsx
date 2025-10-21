@@ -1,75 +1,105 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { FaChevronDown } from "react-icons/fa";
 import "./Navbar.css";
 import logo from "../../assets/Logo.png";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [aboutDropdown, setAboutDropdown] = useState(false);
-  const [projectsDropdown, setProjectsDropdown] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const location = useLocation();
 
-  const toggleMenu = () => setMenuOpen(!menuOpen);
-  const closeMenu = () => setMenuOpen(false);
+  useEffect(() => {
+    setMenuOpen(false);
+    setActiveDropdown(null);
+  }, [location]);
 
-  const toggleAbout = () => setAboutDropdown(!aboutDropdown);
-  const toggleProjects = () => setProjectsDropdown(!projectsDropdown);
+  const isHome = location.pathname === "/";
+
+  const toggleMenu = () => setMenuOpen((s) => !s);
+  const toggleDropdown = (name) =>
+    setActiveDropdown((prev) => (prev === name ? null : name));
+
+  const closeAll = () => {
+    setMenuOpen(false);
+    setActiveDropdown(null);
+  };
 
   return (
-    <header className="navbar-header">
+    <header
+      className={`navbar-header ${isHome ? "home-transparent" : "solid"}`}
+    >
       <div className="navbar-container">
-        <Link to="/" className="logo-link" onClick={closeMenu}>
-          <img src={logo} alt="Hilltop Logo" className="logo" />
-        </Link>
+        <div className="logo-container">
+          <Link to="/" onClick={closeAll}>
+            <img src={logo} alt="Logo" className="logo" />
+          </Link>
+        </div>
 
-        <button className="menu-toggle" onClick={toggleMenu}>
-          ☰
+        <button
+          className={`menu-toggle ${menuOpen ? "open" : ""}`}
+          onClick={toggleMenu}
+        >
+          {menuOpen ? "✕" : "☰"}
         </button>
 
         <nav className={`menu ${menuOpen ? "open" : ""}`}>
-          <Link to="/" onClick={closeMenu}>
+          <Link to="/" onClick={closeAll}>
             Home
           </Link>
 
-          {/* ABOUT US DROPDOWN */}
-          <div className="dropdown">
-            <button className="dropdown-btn" onClick={toggleAbout}>
+          <div
+            className={`dropdown ${activeDropdown === "about" ? "open" : ""}`}
+          >
+            <button
+              type="button"
+              className="dropdown-btn link-style"
+              onClick={() => toggleDropdown("about")}
+            >
               About Us{" "}
-              <FaChevronDown className={aboutDropdown ? "rotate" : ""} />
+              <FaChevronDown
+                className={activeDropdown === "about" ? "rotate" : ""}
+              />
             </button>
-
-            <div className={`dropdown-menu ${aboutDropdown ? "show" : ""}`}>
-              <Link to="/aboutus/whoweare" onClick={closeMenu}>
+            <div className="dropdown-menu">
+              <Link to="/aboutus/whoweare" onClick={closeAll}>
                 Who We Are
               </Link>
-              <Link to="/aboutus/team" onClick={closeMenu}>
+              <Link to="/aboutus/team" onClick={closeAll}>
                 Team
               </Link>
-              <Link to="/aboutus/gallery" onClick={closeMenu}>
+              <Link to="/aboutus/gallery" onClick={closeAll}>
                 Gallery
               </Link>
             </div>
           </div>
 
-          {/* PROJECTS DROPDOWN */}
-          <div className="dropdown">
-            <button className="dropdown-btn" onClick={toggleProjects}>
+          <div
+            className={`dropdown ${
+              activeDropdown === "projects" ? "open" : ""
+            }`}
+          >
+            <button
+              type="button"
+              className="dropdown-btn link-style"
+              onClick={() => toggleDropdown("projects")}
+            >
               Projects{" "}
-              <FaChevronDown className={projectsDropdown ? "rotate" : ""} />
+              <FaChevronDown
+                className={activeDropdown === "projects" ? "rotate" : ""}
+              />
             </button>
-
-            <div className={`dropdown-menu ${projectsDropdown ? "show" : ""}`}>
-              <Link to="/projects/recentlycompleted" onClick={closeMenu}>
+            <div className="dropdown-menu">
+              <Link to="/projects/recentlycompleted" onClick={closeAll}>
                 Recently Completed
               </Link>
-              <Link to="/projects/testimonials" onClick={closeMenu}>
+              <Link to="/projects/testimonials" onClick={closeAll}>
                 Testimonials
               </Link>
             </div>
           </div>
 
-          {/* CONTACT LINK */}
-          <Link to="/contactus" onClick={closeMenu}>
+          <Link to="/contactus" onClick={closeAll}>
             Contact
           </Link>
         </nav>
