@@ -8,13 +8,11 @@ const WhoWeAre = () => {
       <div className="who-glow"></div>
 
       <div className="who-container">
-        {/* Header */}
         <header className="who-header">
           <h1 className="who-title">WHO WE ARE</h1>
           <p className="who-subtitle">HIWOTU / 2019 / Hilltop</p>
         </header>
 
-        {/* Intro */}
         <div className="who-intro fade-in">
           <p>
             Hilltop Consultants is a growing and dynamic consulting firm
@@ -28,7 +26,6 @@ const WhoWeAre = () => {
           </p>
         </div>
 
-        {/* Vision / Mission / Values */}
         <div className="who-boxes">
           <div className="who-card slide-up">
             <h2>Vision</h2>
@@ -69,7 +66,6 @@ const WhoWeAre = () => {
           </div>
         </div>
 
-        {/* What Sets Us Apart */}
         <div className="who-unique fade-in">
           <h2 className="header">What Sets Us Apart</h2>
           <ul>
